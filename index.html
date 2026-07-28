@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thomas Gottignies — Business development, esports &amp; gaming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:wght@400;500;700&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101318;
+    --ink-soft:#3D4450;
+    --mute:#79808C;
+    --paper:#E9EBEE;
+    --card:#F6F7F8;
+    --line:#C9CDD4;
+    --ultra:#2A21D6;
+    --ultra-ink:#1B14A3;
+    --flag:#FFE24A;
+
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --body:"Public Sans",system-ui,sans-serif;
+    --mono:"Martian Mono",ui-monospace,monospace;
+
+    --gutter:clamp(1.25rem,5vw,5rem);
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:clamp(1rem,0.96rem + 0.2vw,1.0625rem);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--ultra-ink)}
+  :focus-visible{outline:3px solid var(--ultra);outline-offset:3px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.6875rem;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--mute);
+  }
+
+  /* ---------- placeholder marker ---------- */
+  .fill{
+    background:var(--flag);
+    color:#3A3000;
+    font-family:var(--mono);
+    font-size:0.8em;
+    padding:0.1em 0.4em;
+    border-radius:2px;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{padding:clamp(3.5rem,10vw,7rem) 0 clamp(2rem,5vw,3.5rem)}
+  .hero h1{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(2.75rem,10vw,5.75rem);
+    line-height:0.92;
+    letter-spacing:-0.03em;
+    margin:0.6rem 0 0;
+  }
+  .thesis{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(1.25rem,1.05rem + 1.1vw,1.875rem);
+    line-height:1.3;
+    letter-spacing:-0.01em;
+    color:var(--ink-soft);
+    max-width:34ch;
+    margin:1.75rem 0 0;
+  }
+  .thesis strong{font-weight:600;color:var(--ink)}
+  .contact-row{
+    display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;
+    margin-top:2rem;
+    font-family:var(--mono);font-size:0.75rem;letter-spacing:0.04em;
+  }
+  .contact-row a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .contact-row a:hover{border-color:var(--ultra)}
+
+  /* ---------- signature: trajectory rail ---------- */
+  .rail{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.25rem 0;margin-top:clamp(2.5rem,6vw,4rem)}
+  .rail-track{display:grid;gap:1.35rem;position:relative}
+  .rail-track::before{
+    content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:var(--line);
+  }
+  .stop{position:relative;padding-left:1.85rem}
+  .stop::before{
+    content:"";position:absolute;top:5px;left:0;width:11px;height:11px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--ink-soft);
+  }
+  @media(min-width:820px){
+    .rail-track{grid-template-columns:repeat(5,1fr);gap:1.25rem}
+    .rail-track::before{left:0;right:0;top:9px;bottom:auto;width:auto;height:1px}
+    .stop{padding-left:0;padding-top:2rem}
+    .stop::before{top:4px}
+  }
+  .stop.now::before{background:var(--ultra);border-color:var(--ultra)}
+  .stop .yr{display:block;font-family:var(--mono);font-size:0.6875rem;letter-spacing:0.08em;color:var(--mute);margin-bottom:0.35rem}
+  .stop .what{display:block;font-weight:700;font-size:0.9375rem;line-height:1.25}
+  .stop .sub{display:block;font-size:0.8125rem;color:var(--mute);margin-top:0.15rem}
+  .stop.now .what{color:var(--ultra-ink)}
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(3.5rem,9vw,6rem) 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap}
+  .sec-head h2{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.5rem,1.2rem + 1.2vw,2.25rem);
+    letter-spacing:-0.02em;margin:0;
+  }
+  .sec-note{font-size:0.875rem;color:var(--mute);max-width:46ch}
+
+  /* ---------- case studies ---------- */
+  .cases{display:grid;gap:1.5rem}
+  @media(min-width:860px){.cases{grid-template-columns:1fr 1fr}}
+  .case{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:clamp(1.5rem,3vw,2.25rem);
+    display:flex;flex-direction:column;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .case:hover{border-color:var(--ultra);transform:translateY(-2px)}
+  .tag{
+    display:inline-block;font-family:var(--mono);font-size:0.625rem;letter-spacing:0.12em;
+    text-transform:uppercase;color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:999px;padding:0.25rem 0.6rem;
+  }
+  .case h3{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(1.25rem,1.1rem + 0.6vw,1.625rem);
+    line-height:1.15;letter-spacing:-0.02em;margin:1rem 0 0.25rem;
+  }
+  .case .role{font-family:var(--mono);font-size:0.6875rem;letter-spacing:0.08em;color:var(--mute);text-transform:uppercase}
+  .case dl{margin:1.5rem 0 0;display:grid;gap:1.1rem}
+  .case dt{font-family:var(--mono);font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute);margin-bottom:0.3rem}
+  .case dd{margin:0;font-size:0.9375rem;line-height:1.55}
+  .case dd ul{margin:0;padding-left:1.1rem}
+  .case dd li{margin-bottom:0.3rem}
+  .case .pull{
+    font-family:var(--display);font-weight:600;
+    font-size:1.0625rem;line-height:1.3;letter-spacing:-0.01em;
+    color:var(--ultra-ink);margin:0.75rem 0 0;
+  }
+  .case .intro{font-size:0.9375rem;line-height:1.6;color:var(--ink-soft);margin:1rem 0 0;max-width:70ch}
+  .viewer{margin-top:1.75rem}
+  .stage{position:relative;background:#0c0e12;border:1px solid var(--line);line-height:0}
+  .stage .slide{width:100%;aspect-ratio:16/9;object-fit:contain;display:block;background:#0c0e12}
+  .nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:2.75rem;height:2.75rem;border:none;cursor:pointer;
+    background:rgba(16,19,24,0.62);color:#fff;
+    font-size:1.6rem;line-height:1;display:flex;align-items:center;justify-content:center;
+    transition:background .15s ease;z-index:2;
+  }
+  .nav:hover{background:var(--ultra)}
+  .nav.prev{left:0}
+  .nav.next{right:0}
+  .viewer-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:0.85rem}
+  .counter{font-family:var(--mono);font-size:0.6875rem;letter-spacing:0.1em;color:var(--mute)}
+  .deck-link{
+    font-family:var(--mono);font-size:0.6875rem;letter-spacing:0.08em;text-transform:uppercase;
+    text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:3px;color:var(--ultra-ink);
+  }
+  .deck-link:hover{border-color:var(--ultra)}
+  .stage .slide{transition:opacity .18s ease}
+  .stage.loading .slide{opacity:0.35}
+  @media(prefers-reduced-motion:reduce){.stage .slide{transition:none}}
+
+  /* ---------- experience ---------- */
+  .jobs{display:grid;gap:0}
+  .job{
+    display:grid;gap:0.4rem 2rem;padding:1.75rem 0;border-top:1px solid var(--line);
+  }
+  @media(min-width:760px){.job{grid-template-columns:9rem 1fr 1fr;align-items:start}}
+  .job:first-child{border-top:none}
+  .job .when{font-family:var(--mono);font-size:0.6875rem;letter-spacing:0.08em;color:var(--mute);padding-top:0.3rem}
+  .job h3{font-family:var(--display);font-weight:700;font-size:1.125rem;letter-spacing:-0.01em;margin:0}
+  .job .co{font-size:0.875rem;color:var(--mute);margin-top:0.15rem}
+  .job ul{margin:0;padding-left:1.1rem;font-size:0.9375rem}
+  .job li{margin-bottom:0.35rem}
+
+  /* ---------- ground ---------- */
+  .ground{display:grid;gap:1.5rem}
+  @media(min-width:760px){.ground{grid-template-columns:1.15fr 1fr;align-items:start}}
+  .ground p{margin-top:0;max-width:52ch}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .stat{background:var(--card);padding:1.25rem}
+  .stat .k{font-family:var(--mono);font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute)}
+  .stat .v{font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:-0.01em;margin-top:0.35rem}
+
+  /* ---------- contact ---------- */
+  .close{padding:clamp(3.5rem,9vw,6rem) 0 clamp(4rem,10vw,7rem);border-bottom:none}
+  .close h2{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.75rem,1.3rem + 2vw,3rem);letter-spacing:-0.025em;
+    margin:0 0 1.5rem;max-width:20ch;
+  }
+  .actions{display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:0.5rem}
+  .btn{
+    display:inline-block;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.08em;
+    text-transform:uppercase;text-decoration:none;
+    padding:0.9rem 1.4rem;border:1px solid var(--ink);
+  }
+  .btn-primary{background:var(--ultra);border-color:var(--ultra);color:#fff}
+  .btn-primary:hover{background:var(--ultra-ink)}
+  .btn-ghost{color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  footer{padding:2rem 0;font-family:var(--mono);font-size:0.6875rem;letter-spacing:0.08em;color:var(--mute);border-top:1px solid var(--line)}
+
+  /* ---------- motion ---------- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .case{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Business development &middot; Esports &amp; gaming &middot; Brussels, open to Europe</p>
+    <h1>Thomas<br>Gottignies</h1>
+    <p class="thesis">Years in sales and marketing, then a Master's in esport management and gaming. <strong>Not a fan looking for a way in — a commercial operator who chose this industry on purpose.</strong></p>
+    <div class="contact-row">
+      <a href="mailto:gottigniest@gmail.com">gottigniest@gmail.com</a>
+      <a href="https://www.linkedin.com/in/thomas-gottignies-46a885372" target="_blank" rel="noopener">LinkedIn</a>
+      <span>Brussels, Belgium</span>
+      <span>FR &middot; EN</span>
+    </div>
+
+    <div class="rail">
+      <p class="eyebrow" style="margin:0 0 1.5rem">The route here</p>
+      <div class="rail-track">
+        <div class="stop">
+          <span class="yr">since 2019</span>
+          <span class="what">Sales consulting</span>
+          <span class="sub">Smart Service Network — freelance</span>
+        </div>
+        <div class="stop">
+          <span class="yr">2020 – 2024</span>
+          <span class="what">Bachelor, Marketing</span>
+          <span class="sub">EPHEC, Brussels</span>
+        </div>
+        <div class="stop">
+          <span class="yr">2024 – 2026</span>
+          <span class="what">Retail sales</span>
+          <span class="sub">Geox — alongside my Master's</span>
+        </div>
+        <div class="stop">
+          <span class="yr">2026 · 6 months</span>
+          <span class="what">Esport Management &amp; Gaming</span>
+          <span class="sub">Itti Sports Institute — completed July 2026</span>
+        </div>
+        <div class="stop now">
+          <span class="yr">2026</span>
+          <span class="what">Open to work</span>
+          <span class="sub">Business development &amp; partnerships</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+      <p class="sec-note">Three commercial projects from my Master's. Each was built as a real pitch — the briefs, the research and the numbers are genuine work; the client relationships are simulated. Use the arrows or your keyboard to move through each deck.</p>
+    </div>
+
+    <div class="cases">
+
+      <article class="case" id="clutchain">
+        <span class="tag">Academic project &middot; Sponsorship pitch &middot; Solo</span>
+        <h3>Clutchain &times; Nalu</h3>
+        <p class="role">Role — Sales Director (simulated)</p>
+        <p class="pull">"Stop paying for a logo. Start paying for results."</p>
+        <p class="intro">Pitching a Belgian energy drink on a full-year sponsorship of an esports org. I picked a local brand on purpose — the offer had to be cheap enough to enter and measurable enough to renew. The deck names the four ways esports sponsorship usually fails and structures the deal to avoid each, built around one asset no rival org has: a five-person gaming capsule with a branded fridge inside.</p>
+        <div class="viewer" data-deck="clutchain" data-count="9">
+          <div class="stage">
+            <button class="nav prev" aria-label="Previous slide">&#8249;</button>
+            <img class="slide" src="images/clutchain/slide-1.jpg" alt="Clutchain x Nalu — slide 1" loading="lazy">
+            <button class="nav next" aria-label="Next slide">&#8250;</button>
+          </div>
+          <div class="viewer-foot">
+            <span class="counter">1 / 9</span>
+            <a class="deck-link" href="docs/clutchain-x-nalu.pdf" target="_blank" rel="noopener">Open as PDF</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" id="pubg">
+        <span class="tag">Academic project &middot; Brand campaign &middot; Pair</span>
+        <h3>PUBG Mobile &times; YETI</h3>
+        <p class="role">Role — co-author, two-person team</p>
+        <p class="pull">"Survive the Wild" — in-game survival unlocks real outdoor gear.</p>
+        <p class="intro">A limited-time collaboration between a mobile battle royale and an outdoor brand, argued commercially rather than on taste. Every choice is backed with data: PUBG Mobile over PC on reach, YETI over Stanley on thematic fit. The money is structured as a value exchange — a royalty to YETI on co-branded cosmetics instead of a flat fee — so both partners want the same outcome.</p>
+        <div class="viewer" data-deck="pubg" data-count="14">
+          <div class="stage">
+            <button class="nav prev" aria-label="Previous slide">&#8249;</button>
+            <img class="slide" src="images/pubg/slide-1.jpg" alt="PUBG Mobile x YETI — slide 1" loading="lazy">
+            <button class="nav next" aria-label="Next slide">&#8250;</button>
+          </div>
+          <div class="viewer-foot">
+            <span class="counter">1 / 14</span>
+            <a class="deck-link" href="docs/pubg-mobile-x-yeti.pdf" target="_blank" rel="noopener">Open as PDF</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" id="holy">
+        <span class="tag">Academic project &middot; Sponsorship pitch &middot; Group</span>
+        <h3>HOLY &times; Draculan</h3>
+        <p class="role">Role — team of four</p>
+        <p class="pull">A healthier energy drink entering esports through a Tier 2 event.</p>
+        <p class="intro">A sponsorship case putting HOLY — a low-sugar energy drink — behind Draculan, a Tier 2 Counter-Strike event in Romania. The argument is a cost-to-impact one: a Tier 2 event gives exposure to top teams and an international audience at a fraction of Tier 1 saturation and price, while opening a specific regional market.</p>
+        <div class="viewer" data-deck="holy" data-count="13">
+          <div class="stage">
+            <button class="nav prev" aria-label="Previous slide">&#8249;</button>
+            <img class="slide" src="images/holy/slide-1.jpg" alt="HOLY x Draculan — slide 1" loading="lazy">
+            <button class="nav next" aria-label="Next slide">&#8250;</button>
+          </div>
+          <div class="viewer-foot">
+            <span class="counter">1 / 13</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Commercial experience</h2>
+      <p class="sec-note">Sales, marketing and customer service across four roles — carrying a target and running campaigns before I ever built a deck about either.</p>
+    </div>
+
+    <div class="jobs">
+      <div class="job">
+        <span class="when">2024 – 2026</span>
+        <div>
+          <h3>Sales Assistant</h3>
+          <p class="co">Geox &middot; Belgium</p>
+        </div>
+        <ul>
+          <li>Face-to-face selling and personalised advice against sales objectives, while completing my Master's</li>
+          <li>Upselling, cash operations and stock management; contributing to customer satisfaction and store image</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <span class="when">2023 – 2024</span>
+        <div>
+          <h3>Marketing &amp; Customer Service</h3>
+          <p class="co">Luminette &middot; Belgium</p>
+        </div>
+        <ul>
+          <li>Ran the marketing communication channels — social media, newsletters, website — and created the content for them</li>
+          <li>Handled customer support and analysed campaign performance and feedback</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <span class="when">2023</span>
+        <div>
+          <h3>Audiovisual Marketing Intern</h3>
+          <p class="co">Qualifio &middot; Belgium</p>
+        </div>
+        <ul>
+          <li>Produced and edited promotional video content (Adobe Premiere Pro) to promote products and services</li>
+          <li>Optimised content for social media and digital channels</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <span class="when">2019 – present</span>
+        <div>
+          <h3>Independent Sales Consultant</h3>
+          <p class="co">Smart Service Network &middot; Belgium</p>
+        </div>
+        <ul>
+          <li>Prospecting by phone and in person; running sales meetings end to end</li>
+          <li>Identifying customer needs and budget, then proposing tailored offers</li>
+          <li>Sales follow-up, reporting and team meetings</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2>Looking for a business development or partnerships role in esports.</h2>
+    <p class="sec-note" style="max-width:44ch">Based in Brussels, open to relocating in Europe. If you have an opening, or just want to talk about it, write to me.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="mailto:gottigniest@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="docs/thomas-gottignies-cv.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/thomas-gottignies-46a885372" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="wrap"><footer>Thomas Gottignies &middot; Brussels &middot; 2026</footer></div>
+</section>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Slide viewers
+  document.querySelectorAll('.viewer').forEach(v => {
+    const deck = v.dataset.deck;
+    const count = parseInt(v.dataset.count, 10);
+    const img = v.querySelector('.slide');
+    const stage = v.querySelector('.stage');
+    const counter = v.querySelector('.counter');
+    let i = 1;
+
+    // Preload neighbours for snappier nav
+    const pre = {};
+    const preload = n => {
+      if (n < 1 || n > count || pre[n]) return;
+      const p = new Image(); p.src = `images/${deck}/slide-${n}.jpg`; pre[n] = p;
+    };
+
+    const show = n => {
+      i = (n < 1) ? count : (n > count ? 1 : n); // wrap around
+      stage.classList.add('loading');
+      const next = new Image();
+      next.onload = () => { img.src = next.src; stage.classList.remove('loading'); };
+      next.src = `images/${deck}/slide-${i}.jpg`;
+      img.alt = `${deck} — slide ${i}`;
+      counter.textContent = `${i} / ${count}`;
+      preload(i + 1); preload(i - 1);
+    };
+
+    v.querySelector('.prev').addEventListener('click', () => show(i - 1));
+    v.querySelector('.next').addEventListener('click', () => show(i + 1));
+
+    // Keyboard nav when the viewer is in view and hovered/focused
+    stage.tabIndex = 0;
+    stage.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(i - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(i + 1); }
+    });
+
+    preload(2);
+  });
+</script>
+
+</body>
+</html>
